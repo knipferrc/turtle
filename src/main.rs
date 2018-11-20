@@ -16,18 +16,12 @@ fn main() {
         let command = parts.next().unwrap();
         let args = parts;
 
-       let mut child = if cfg!(target_os = "windows") {
-            Command::new(command)
-                .args(args)
-                .spawn()
-                .unwrap()
+        let mut child = if cfg!(target_os = "windows") {
+            Command::new(command).args(args).spawn().unwrap()
         } else {
-            Command::new(command)
-                .args(args)
-                .spawn()
-                .unwrap()
+            Command::new(command).args(args).spawn().unwrap()
         };
-        
+
         child.wait().expect("Failed executing command");
     }
 }
