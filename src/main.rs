@@ -27,12 +27,14 @@ fn main() {
             },
             "exit" => return,
             command => {
-                let mut child = Command::new(command)
+                let child = Command::new(command)
                     .args(args)
-                    .spawn()
-                    .unwrap();
+                    .spawn();
 
-                child.wait().expect("Error spawning command");
+                match child {
+                    Ok(mut child) => { child.wait().unwrap(); },
+                    Err(e) => eprintln!("{}", e),
+                }
             }
         }
     }
