@@ -1,2 +1,2 @@
 # Turtle 🐢
-- A not so slow shell
+- A shell you won't want to come out of
