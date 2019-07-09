@@ -4,10 +4,15 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
+	"log"
 	"os"
 	"os/exec"
 	"strings"
+
+	"github.com/printzero/tint"
 )
+
+var green func(text string) string
 
 func execInput(input string) error {
 	input = strings.TrimSuffix(input, "\n")
@@ -34,10 +39,24 @@ func execInput(input string) error {
 }
 
 func main() {
+	t := tint.Init()
 	reader := bufio.NewReader(os.Stdin)
 
+	green = t.SwatchRaw(tint.Green.Bold())
+
 	for {
-		fmt.Print("🐢 >")
+		dir, err := os.Getwd()
+
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		currentDir := strings.Split(dir, "/")
+		curPath := currentDir[len(currentDir)-1]
+		finalPath := green(curPath)
+
+		fmt.Printf("🐢 %s ", finalPath)
+
 		input, err := reader.ReadString('\n')
 
 		if err != nil {
