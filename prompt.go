@@ -10,11 +10,13 @@ import (
 )
 
 var green func(text string) string
+var white func(text string) string
 
 func BuildPrompt() {
 	t := tint.Init()
 
-	green = t.SwatchRaw(tint.Green.Bold())
+	green = t.SwatchRaw(tint.Blue.Bold())
+	white = t.SwatchRaw(tint.White.Bold())
 
 	dir, err := os.Getwd()
 
@@ -22,9 +24,16 @@ func BuildPrompt() {
 		log.Fatal(err)
 	}
 
-	currentDir := strings.Split(dir, "/")
-	curPath := currentDir[len(currentDir)-1]
-	finalPath := green(curPath)
+	dirs := strings.Split(dir, "/")
 
-	fmt.Printf("🐢 %s ", finalPath)
+	previousDir := dirs[len(dirs)-2]
+	currentDir := dirs[len(dirs)-1]
+
+	symbol := white("$")
+
+	pathString := strings.Join([]string{"🐢 ", "~/", previousDir, "/", currentDir, symbol, " "}, "")
+
+	finalPath := green(pathString)
+
+	fmt.Print(finalPath)
 }
