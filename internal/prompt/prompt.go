@@ -1,4 +1,4 @@
-package main
+package prompt
 
 import (
 	"fmt"
@@ -12,6 +12,7 @@ import (
 var green func(text string) string
 var white func(text string) string
 
+// BuildPrompt builds the users prompt
 func BuildPrompt() {
 	t := tint.Init()
 

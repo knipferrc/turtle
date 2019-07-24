@@ -1,4 +1,4 @@
-package main
+package cli
 
 import (
 	"errors"
@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// ExecInput executes users input
 func ExecInput(input string) error {
 	input = strings.TrimSuffix(input, "\n")
 

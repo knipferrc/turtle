@@ -4,20 +4,23 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+
+	"github.com/knipferrc/turtle/internal/cli"
+	"github.com/knipferrc/turtle/internal/prompt"
 )
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
 
 	for {
-		BuildPrompt()
+		prompt.BuildPrompt()
 
 		input, err := reader.ReadString('\n')
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
 		}
 
-		if err = ExecInput(input); err != nil {
+		if err = cli.ExecInput(input); err != nil {
 			fmt.Fprintln(os.Stderr, err)
 		}
 	}
