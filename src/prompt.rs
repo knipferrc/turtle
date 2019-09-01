@@ -18,7 +18,7 @@ pub fn print() {
         whoami::hostname(),
         ":",
         colors::ANSI_BOLD,
-        colors::ANSI_COLOR_CYAN,
+        colors::ANSI_COLOR_MAGENTA,
         "~/",
         split_path[split_path.len() - 2],
         "/",
