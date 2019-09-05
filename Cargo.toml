@@ -1,8 +1,0 @@
-[package]
-name = "turtle"
-version = "0.1.0"
-authors = ["knipferrc <knipferrc@gmail.com>"]
-edition = "2018"
-
-[dependencies]
-whoami = "0.5.3"
