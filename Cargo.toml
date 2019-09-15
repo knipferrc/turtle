@@ -6,3 +6,4 @@ edition = "2018"
 
 [dependencies]
 whoami = "0.5.3"
+config = "0.9"
