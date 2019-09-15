@@ -1,7 +1,7 @@
+use whoami;
+
 use std::env;
 use std::io::{stdout, Write};
-
-use whoami;
 
 use crate::colors;
 
@@ -27,5 +27,5 @@ pub fn print() {
     );
 
     print!("{}", prompt);
-    stdout().flush().ok().expect("Could not flush stdout");
+    stdout().flush().expect("Could not flush stdout");
 }
