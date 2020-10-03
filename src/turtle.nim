@@ -1,7 +1,10 @@
 import hooks  
 import commands  
+import config
 
 proc main() = 
+  config.loadConfig()
+  
   while true:
     stdout.write "$:> "
     var command: string = readLine(stdin)
